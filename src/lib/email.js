@@ -14,7 +14,7 @@
 const RESEND_URL = "https://api.resend.com/emails";
 
 const DEFAULT_FROM = "Vidyanjali Learning Centre <contact@vidyanjalilearningcentre.com>";
-const DEFAULT_TO = "contact@vidyanjalilearningcentre.com";
+const DEFAULT_TO = "vidyanjalitherapycentre2112@gmail.com";
 
 export const emailConfig = {
   from: process.env.CONTACT_FROM || DEFAULT_FROM,
