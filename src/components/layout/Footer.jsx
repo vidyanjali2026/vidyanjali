@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "@/components/brand/Logo";
 import Container from "./Container";
+import InstagramIcon from "@/components/ui/InstagramIcon";
 import { allRoutes, contact, site } from "@/content/site";
 
 /**
@@ -14,9 +15,9 @@ import { allRoutes, contact, site } from "@/content/site";
  * footer is where a site lists what exists; the header is where it says what
  * is worth your attention. The page is still two `ContentPending` blocks.
  *
- * NO invented contact details. `contact.email` is null until the client
- * supplies it, and the block below simply does not render — which is the
- * correct behaviour, not a gap to be filled with a plausible-looking address.
+ * CONTACT DETAILS come from `contact` in src/content/site.js — phone,
+ * location and Instagram as supplied by the client. Any field left null
+ * simply does not render; nothing here is filled in with a placeholder.
  */
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -29,6 +30,32 @@ export default function Footer() {
               the artwork's tagline is only a few pixels tall and reads as a
               smudge. */}
           <Logo variant="full" size="md" />
+
+          {(contact.phone || contact.address) && (
+            <address className="flex flex-col gap-1.5 text-body-sm not-italic text-ink-body">
+              {contact.phone && (
+                <a
+                  href={`tel:${contact.phone.replace(/\s+/g, "")}`}
+                  className="w-fit tabular-nums text-ink-body no-underline transition-colors duration-300 hover:text-teal"
+                >
+                  {contact.phone}
+                </a>
+              )}
+              {contact.address && <span>{contact.address}</span>}
+            </address>
+          )}
+
+          {contact.instagram && (
+            <a
+              href={contact.instagram.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${site.name} on Instagram (opens in a new tab)`}
+              className="flex h-10 w-10 items-center justify-center rounded-pill border border-rule-strong text-ink transition-colors duration-300 hover:border-teal hover:bg-teal hover:text-ink-invert"
+            >
+              <InstagramIcon className="h-[1.15rem] w-[1.15rem]" />
+            </a>
+          )}
         </div>
 
         <nav aria-label="Footer">
