@@ -80,11 +80,18 @@ export const footerCta = {
 };
 
 /**
- * Contact details — placeholders. Replace with the real details; the footer
- * and contact page read from here, so this is the only edit needed.
+ * Contact details, as supplied by the client. The footer and the contact page
+ * read from here, so this is the only edit needed. A null field simply does
+ * not render.
  */
 export const contact = {
-  email: null, // e.g. "hello@vidyanjali.org"
-  phone: null,
-  address: null,
+  email: "vidyanjalitherapycentre2112@gmail.com",
+  phone: "+91 73058 73755",
+  address: "Nungambakkam, Chennai",
+  /* The profile URL without the share-tracking `?stkn=` token the link was
+     copied with — same profile, cleaner link. */
+  instagram: {
+    handle: "@vidyanjali_chennai",
+    url: "https://www.instagram.com/vidyanjali_chennai/",
+  },
 };
