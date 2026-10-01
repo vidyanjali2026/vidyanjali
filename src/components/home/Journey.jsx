@@ -35,7 +35,7 @@ import { journey } from "@/content/about";
 /* Both stations come from `journey[0]`. Nothing here is inferred. */
 const STATIONS = [
   { marker: "2003", label: "A therapy centre" },
-  { marker: "Today", label: "A school" },
+  { marker: "Today", label: "A learning centre" },
 ];
 
 export default function Journey() {
