@@ -15,6 +15,11 @@ import { emailConfig, escapeHtml, sendEmail } from "@/lib/email";
  * courtesy — if it fails (a mistyped address, say) the enquiry has still
  * arrived, so it is logged and the parent still sees success.
  *
+ * WHILE THE SENDER IS onboarding@resend.dev, Resend delivers only to the
+ * address that owns the Resend account, so the acknowledgement to parents is
+ * rejected (and logged) until the centre's own domain is verified. The
+ * enquiry to CONTACT_TO still arrives if that inbox owns the account.
+ *
  * The acknowledgement wording promises only that the enquiry was received
  * and will be answered. Add response times or next steps only once the
  * client has confirmed them.
