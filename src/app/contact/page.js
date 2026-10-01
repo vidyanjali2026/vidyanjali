@@ -2,6 +2,7 @@ import PageHeader from "@/components/layout/PageHeader";
 import Section from "@/components/layout/Section";
 import Reveal from "@/components/ui/Reveal";
 import ContactForm from "@/components/contact/ContactForm";
+import InstagramIcon from "@/components/ui/InstagramIcon";
 import { contact } from "@/content/site";
 import ClosingCTA from "@/components/layout/ClosingCTA";
 
@@ -10,7 +11,9 @@ export const metadata = {
 };
 
 export default function ContactPage() {
-  const hasDetails = Boolean(contact.email || contact.phone || contact.address);
+  const hasDetails = Boolean(
+    contact.email || contact.phone || contact.address || contact.instagram,
+  );
 
   return (
     <>
@@ -19,7 +22,7 @@ export default function ContactPage() {
       <Section>
         {hasDetails ? (
           <Reveal>
-            <dl className="mb-14 grid gap-10 border-t-[3px] border-gold pt-7 sm:grid-cols-2">
+            <dl className="mb-14 flex flex-wrap gap-x-16 gap-y-8 border-t-[3px] border-gold pt-7">
               {contact.email && (
                 <div>
                   <dt className="text-eyebrow font-sans uppercase text-teal">
@@ -53,12 +56,32 @@ export default function ContactPage() {
               )}
 
               {contact.address && (
-                <div className="sm:col-span-2">
+                <div>
                   <dt className="text-eyebrow font-sans uppercase text-teal">
                     Visit
                   </dt>
                   <dd className="mt-2 max-w-measure text-body whitespace-pre-line">
                     {contact.address}
+                  </dd>
+                </div>
+              )}
+
+              {contact.instagram && (
+                <div>
+                  <dt className="text-eyebrow font-sans uppercase text-teal">
+                    Follow us
+                  </dt>
+                  <dd className="mt-2 text-body">
+                    <a
+                      href={contact.instagram.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-ink no-underline transition-colors duration-300 hover:text-teal"
+                    >
+                      <InstagramIcon className="h-5 w-5" />
+                      {contact.instagram.handle}
+                      <span className="sr-only"> on Instagram (opens in a new tab)</span>
+                    </a>
                   </dd>
                 </div>
               )}
